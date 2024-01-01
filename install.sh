@@ -34,9 +34,24 @@ if [ -n "$disk_name" ]; then
     echo "Particiones actuales en /dev/$disk_name:"
     lsblk "/dev/$disk_name"
 
-    # Configurar particiones usando cfdisk en el disco seleccionado
-    cfdisk "/dev/$disk_name"
+    # Solicitar al usuario que elija una partición para darle formato ext4
+    echo -n "Ingrese el número de la partición a la que desea dar formato ext4: "
+    read partition_choice
+
+    # Obtener el nombre de la partición seleccionada
+    partition_name="/dev/${disk_name}${partition_choice}"
+
+    # Verificar si la partición ingresada es válida
+    if [ -b "$partition_name" ]; then
+        # Formatear la partición como ext4
+        mkfs.ext4 "$partition_name"
+
+        echo "¡La partición $partition_name ha sido formateada como ext4 con éxito!"
+    else
+        echo "¡La opción de partición ingresada no es válida! Abortando."
+        exit 1
+    fi
 else
-    echo "¡La opción ingresada no es válida! Abortando."
+    echo "¡La opción de disco ingresada no es válida! Abortando."
     exit 1
 fi
