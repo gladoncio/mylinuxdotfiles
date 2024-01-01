@@ -55,8 +55,30 @@ if [ -n "$disk_name" ]; then
         mount "$partition_name" /mnt/
 
         # Verificar si la partición se montó correctamente
+        # Verificar si la partición se montó correctamente
         if mountpoint -q /mnt; then
             echo "La partición $partition_name se ha montado en /mnt con éxito."
+
+            # Solicitar al usuario que elija una partición para configurar como swap
+            echo -n "Ingrese el número de la partición que desea configurar como swap: "
+            read swap_partition_choice
+
+            # Obtener el nombre de la partición swap seleccionada
+            swap_partition_name="/dev/${disk_name}${swap_partition_choice}"
+
+            # Verificar si la partición swap ingresada es válida
+            if [ -b "$swap_partition_name" ]; then
+                # Configurar la partición como swap
+                mkswap "$swap_partition_name"
+
+                # Activar la swap
+                swapon "$swap_partition_name"
+
+                echo "La partición $swap_partition_name ha sido configurada como swap con éxito."
+            else
+                echo "¡La opción de partición swap ingresada no es válida! Abortando."
+                exit 1
+            fi
         else
             echo "¡Error al intentar montar la partición en /mnt! Abortando."
             exit 1
