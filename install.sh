@@ -44,12 +44,23 @@ if [ -n "$disk_name" ]; then
     # Obtener el nombre de la partición seleccionada
     partition_name="/dev/${disk_name}${partition_choice}"
 
-    # Verificar si la partición ingresada es válida
+    # Verificar si la partición ingresada es válida# Verificar si la partición ingresada es válida
     if [ -b "$partition_name" ]; then
         # Formatear la partición como ext4
         mkfs.ext4 "$partition_name"
 
         echo "¡La partición $partition_name ha sido formateada como ext4 con éxito!"
+
+        # Montar la partición en /mnt
+        mount "$partition_name" /mnt/
+
+        # Verificar si la partición se montó correctamente
+        if mountpoint -q /mnt; then
+            echo "La partición $partition_name se ha montado en /mnt con éxito."
+        else
+            echo "¡Error al intentar montar la partición en /mnt! Abortando."
+            exit 1
+        fi
     else
         echo "¡La opción de partición ingresada no es válida! Abortando."
         exit 1
@@ -58,3 +69,5 @@ else
     echo "¡La opción de disco ingresada no es válida! Abortando."
     exit 1
 fi
+
+
