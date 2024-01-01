@@ -30,8 +30,8 @@ disk_name=$(lsblk -d -o NAME --noheadings | sed -n "${choice}p")
 
 # Verificar si el disco ingresado es válido
 if [ -n "$disk_name" ]; then
-    # Ejecutar cfdisk en el mismo proceso (source)
-    . cfdisk "/dev/$disk_name"
+    # Ejecutar cfdisk para configurar particiones
+    cfdisk "/dev/$disk_name"
 
     # Mostrar información sobre particiones del disco seleccionado después de cfdisk
     echo "Particiones actuales en /dev/$disk_name:"
