@@ -30,12 +30,12 @@ disk_name=$(lsblk -d -o NAME --noheadings | sed -n "${choice}p")
 
 # Verificar si el disco ingresado es válido
 if [ -n "$disk_name" ]; then
-    # Mostrar información sobre particiones del disco seleccionado
-    echo "Particiones actuales en /dev/$disk_name:"
-    lsblk "/dev/$disk_name"
-
     # Ejecutar cfdisk en el mismo proceso (source)
     . cfdisk "/dev/$disk_name"
+
+    # Mostrar información sobre particiones del disco seleccionado después de cfdisk
+    echo "Particiones actuales en /dev/$disk_name:"
+    lsblk "/dev/$disk_name"
 
     # Solicitar al usuario que elija una partición para darle formato ext4
     echo -n "Ingrese el número de la partición a la que desea dar formato ext4: "
