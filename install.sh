@@ -34,8 +34,8 @@ if [ -n "$disk_name" ]; then
     echo "Particiones actuales en /dev/$disk_name:"
     lsblk "/dev/$disk_name"
 
-    # Ejecutar cfdisk en un subproceso
-    ( cfdisk "/dev/$disk_name" )
+    # Ejecutar cfdisk en el mismo proceso (source)
+    . cfdisk "/dev/$disk_name"
 
     # Solicitar al usuario que elija una partición para darle formato ext4
     echo -n "Ingrese el número de la partición a la que desea dar formato ext4: "
@@ -58,4 +58,3 @@ else
     echo "¡La opción de disco ingresada no es válida! Abortando."
     exit 1
 fi
-
