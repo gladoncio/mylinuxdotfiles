@@ -18,4 +18,4 @@ nm-applet &
 
 nitrogen --restore & 
 
-barrier --no-tray --enable-crypto --name gladoncio --ip-addr 192.168.18.106 &
+#barrier --no-tray --enable-crypto --name gladoncio --ip-addr 192.168.18.106 &

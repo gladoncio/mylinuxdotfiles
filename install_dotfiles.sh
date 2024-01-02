@@ -14,7 +14,7 @@ sudo sed -i 's/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-g
 
 sudo systemctl enable lightdm
 
-sudo pacman -S qtile firefox rofi which nitrogen kitty
+sudo pacman -S qtile firefox rofi which nitrogen kitty arandr
 
 sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
 
@@ -25,6 +25,8 @@ sudo pacman -S arandr udiskie netowork-manager-applet
 sudo pacman -S volumeicon cbatticon xorg-xinit thunar ranger glib2 gvfs lxappearance picom geeqie vlc 
 
 sudo pacman -S xkeyboard-config
+
+sudo pacman -S htop lolcat
 
 setxkbmap -layout es -variant latam
 
@@ -65,6 +67,9 @@ fi
 # Ruta de destino
 destino="/home/$USERNAME/.config/"
 
+destino_usuario="/home/$USERNAME"
+
+
 # Verificar si la carpeta qtile existe
 if [ -d "qtile" ]; then
     # Copiar la carpeta y su contenido al destino
@@ -83,7 +88,30 @@ else
 fi
 
 
+if [ -d "kitty" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r kitty "$destino"
+    echo "Carpeta qtile copiada a $destino"
+else
+    echo "La carpeta qtile no existe en el directorio actual."
+fi
 
+
+if [ -d "rofi" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r rofi "$destino"
+    echo "Carpeta qtile copiada a $destino"
+else
+    echo "La carpeta qtile no existe en el directorio actual."
+fi
+
+if [ -d "wallpapers" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r wallpapers "$destino_usuario"
+    echo "Carpeta qtile copiada a $destino_usuario"
+else
+    echo "La carpeta qtile no existe en el directorio actual."
+fi
 
 # # Configura Xorg
 # echo "Section \"Device\"
