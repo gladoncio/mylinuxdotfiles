@@ -56,12 +56,12 @@ else
 fi
 
 # Configura Xorg
-echo "Section \"Device\"
+sudo echo "Section \"Device\"
     Identifier  \"Auto-detected Graphics\"
     Driver      \"auto-detected\"
 EndSection" > /etc/X11/xorg.conf.d/20-auto-detected.conf
 
 # Inicia Xorg automáticamente al iniciar sesión en la consola
-echo "exec startx" > /root/.bash_profile
+sudo echo "exec startx" > /root/.bash_profile
 
 echo "Configuración de controladores de gráficos y Xorg completada con éxito."
