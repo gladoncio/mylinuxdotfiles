@@ -106,7 +106,7 @@ if [ "$es_dual_boot" == "y" ]; then
 
 else
     grub-mkconfig -o /boot/grub/grub.cfg
-    
+
     echo "¡Configurando para instalación sin dual-boot!"
 
     # Puedes agregar más comandos específicos para instalación sin dual boot aquí
