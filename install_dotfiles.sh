@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Mensaje de bienvenida
 echo "¡Hola, bienvenido al script post grub!"
 
@@ -55,13 +54,26 @@ else
     echo "No se pudo determinar automáticamente el controlador de gráficos. Por favor, instálalo manualmente."
 fi
 
+
+# Obtener el nombre de usuario principal
+USERNAME="$SUDO_USER"
+
+# Si SUDO_USER está vacío, intentar obtener el nombre de usuario actual
+if [ -z "$USERNAME" ]; then
+    USERNAME=$(logname)
+fi
+
+echo "Nombre de usuario: $USERNAME"
+
+sudo su
+
 # Configura Xorg
-sudo echo "Section \"Device\"
+echo "Section \"Device\"
     Identifier  \"Auto-detected Graphics\"
     Driver      \"auto-detected\"
 EndSection" > /etc/X11/xorg.conf.d/20-auto-detected.conf
 
 # Inicia Xorg automáticamente al iniciar sesión en la consola
-sudo echo "exec startx" > /root/.bash_profile
+echo "exec startx" > /root/.bash_profile
 
 echo "Configuración de controladores de gráficos y Xorg completada con éxito."
