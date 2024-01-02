@@ -30,6 +30,14 @@ sudo pacman -S htop lolcat unzip
 
 sudo pacman -S python-psutil
 
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si
+
+cd ..
+
 #sudo systemctl restart display-manager.service
 
 # Instala Xorg y utilidades básicas (si no están instaladas)
