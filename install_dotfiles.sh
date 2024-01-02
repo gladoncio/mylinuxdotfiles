@@ -25,10 +25,12 @@ sudo pacman -S arandr udiskie netowork-manager-applet
 
 sudo pacman -S volumeicon cbatticon xorg-xinit thunar ranger glib2 gvfs lxappearance picom geeqie vlc 
 
-# Instala Xorg y utilidades básicas (si no están instaladas)
-sudo pacman -Syu --noconfirm xorg xorg-xinit xorg-server-utils mesa
+sudo pacman -S xkeyboard-config
 
-# Utiliza lspci para obtener información sobre la tarjeta gráfica
+setxkbmap -layout es -variant latam
+
+sudo systemctl restart display-manager.service
+
 # Instala Xorg y utilidades básicas (si no están instaladas)
 sudo pacman -Syu --noconfirm xorg xorg-xinit xorg-server-utils mesa
 

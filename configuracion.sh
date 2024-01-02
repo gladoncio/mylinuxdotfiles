@@ -3,7 +3,7 @@
 # Variables para la instalación base
 ZONA_HORARIA=$(curl -s https://ipapi.co/timezone)
 LOCALE="es_CL.UTF-8"
-TECLADO="latam"
+TECLADO="es"
 NOMBRE_SISTEMA="archlinux"
 USUARIO="gladoncio"
 
