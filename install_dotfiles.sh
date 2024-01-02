@@ -79,22 +79,22 @@ else
     echo "La carpeta qtile no existe en el directorio actual."
 fi
 
-if [ -d "picom" ]; then
-    # Copiar la carpeta y su contenido al destino
-    sudo cp -r picom "$destino"
-    echo "Carpeta picom copiada a $destino"
-else
-    echo "La carpeta picom no existe en el directorio actual."
-fi
+# if [ -d "picom" ]; then
+#     # Copiar la carpeta y su contenido al destino
+#     sudo cp -r picom "$destino"
+#     echo "Carpeta picom copiada a $destino"
+# else
+#     echo "La carpeta picom no existe en el directorio actual."
+# fi
 
 
-if [ -d "kitty" ]; then
-    # Copiar la carpeta y su contenido al destino
-    sudo cp -r kitty "$destino"
-    echo "Carpeta kitty copiada a $destino"
-else
-    echo "La carpeta kitty no existe en el directorio actual."
-fi
+# if [ -d "kitty" ]; then
+#     # Copiar la carpeta y su contenido al destino
+#     sudo cp -r kitty "$destino"
+#     echo "Carpeta kitty copiada a $destino"
+# else
+#     echo "La carpeta kitty no existe en el directorio actual."
+# fi
 
 
 if [ -d "rofi" ]; then
