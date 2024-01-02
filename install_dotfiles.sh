@@ -31,7 +31,7 @@ setxkbmap -layout es -variant latam
 #sudo systemctl restart display-manager.service
 
 # Instala Xorg y utilidades básicas (si no están instaladas)
-sudo pacman -Syu --noconfirm xorg xorg-xinit xorg-server-utils mesa
+sudo pacman -Syu --noconfirm xorg-xinit mesa
 
 # # Utiliza lspci para obtener información sobre la tarjeta gráfica
 # gpu_info=$(lspci | grep VGA)
