@@ -9,3 +9,7 @@ USUARIO="gladoncio"
 
 # Configurar sudoers
 SUDOERS_FILE="/etc/sudoers"
+
+
+# Archivo de configuración de pacman
+pacman_conf="/etc/pacman.conf"

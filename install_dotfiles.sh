@@ -124,6 +124,17 @@ ruta_imagen="$ruta_imagenes/background.jpg"
 nitrogen --set-scaled "$ruta_imagen" --save
 
 
+# Activar los repositorios community y multilib
+sudo sed -i '/^\[community\]/{n;s/^#//}' "$pacman_conf"
+sudo sed -i '/^\[multilib\]/{n;s/^#//}' "$pacman_conf"
+
+# Actualizar la base de datos de paquetes
+sudo pacman -Sy
+
+# Actualizar la base de datos de paquetes
+sudo pacman -Sy
+
+
 
 
 # # Configura Xorg
