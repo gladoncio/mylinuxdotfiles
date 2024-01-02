@@ -78,6 +78,7 @@ destino="/home/$USERNAME/.config/"
 destino_usuario="/home/$USERNAME"
 
 
+
 # Verificar si la carpeta qtile existe
 if [ -d "qtile" ]; then
     # Copiar la carpeta y su contenido al destino
@@ -86,6 +87,7 @@ if [ -d "qtile" ]; then
 else
     echo "La carpeta qtile no existe en el directorio actual."
 fi
+
 
 # if [ -d "picom" ]; then
 #     # Copiar la carpeta y su contenido al destino
@@ -121,7 +123,13 @@ else
     echo "La carpeta wallpapers no existe en el directorio actual."
 fi
 
-
+if [ -d "neofetch" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r neofetch "$destino"
+    echo "Carpeta neofetch copiada a $destino"
+else
+    echo "La carpeta neofetch no existe en el directorio actual."
+fi
 
 
 # Activar el repositorio community
