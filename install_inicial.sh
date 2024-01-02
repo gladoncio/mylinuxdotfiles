@@ -74,7 +74,41 @@ if [ -n "$disk_name" ]; then
 
     grub-install "/dev/$disk_name"
 
-else
+    echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+
+else 
     echo "¡La opción de disco ingresada no es válida! Abortando."
     exit 1
+fi
+
+
+# Preguntar al usuario si es un dual boot
+echo -n "¿Es una instalación dual-boot? (y/n): "
+read es_dual_boot
+
+if [ "$es_dual_boot" == "y" ]; then
+    # Comandos específicos para dual boot
+    echo "¡Configurando para dual-boot!"
+    if [ -n "$windows" ]; then
+
+        mkdir /mnt/winboot
+
+        mount "/dev/#windows" /mnt/winboot/
+
+        os-prober
+
+        grub-mkconfig -o /boot/grub/grub.cfg
+
+    else 
+        echo "¡La opción de disco ingresada no es válida! Abortando."
+        exit 1
+    fi
+
+else
+    grub-mkconfig -o /boot/grub/grub.cfg
+    
+    echo "¡Configurando para instalación sin dual-boot!"
+
+    # Puedes agregar más comandos específicos para instalación sin dual boot aquí
+
 fi
