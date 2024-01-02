@@ -24,3 +24,35 @@ sudo pacman -S pulseaudio pavucontrol pamixer
 sudo pacman -S arandr udiskie netowork-manager-applet
 
 sudo pacman -S volumeicon cbatticon xorg-xinit thunar ranger glib2 gvfs lxappearance picom geeqie vlc 
+
+# Instala Xorg y utilidades básicas (si no están instaladas)
+sudo pacman -Syu --noconfirm xorg xorg-xinit xorg-server-utils mesa
+
+# Utiliza lspci para obtener información sobre la tarjeta gráfica
+gpu_info=$(lspci | grep VGA)
+echo "Información de la tarjeta gráfica: $gpu_info"
+
+# Determina el controlador de gráficos basándote en la información de lspci
+if [[ $gpu_info == *"Intel"* ]]; then
+    echo "Detectada tarjeta gráfica Intel. Instalando controlador para Intel."
+    pacman -S --noconfirm xf86-video-intel
+elif [[ $gpu_info == *"NVIDIA"* ]]; then
+    echo "Detectada tarjeta gráfica NVIDIA. Instalando controlador para NVIDIA."
+    pacman -S --noconfirm nvidia
+elif [[ $gpu_info == *"AMD"* ]]; then
+    echo "Detectada tarjeta gráfica AMD. Instalando controlador para AMD."
+    pacman -S --noconfirm xf86-video-amdgpu
+else
+    echo "No se pudo determinar automáticamente el controlador de gráficos. Por favor, instálalo manualmente."
+fi
+
+# Configura Xorg
+echo "Section \"Device\"
+    Identifier  \"Auto-detected Graphics\"
+    Driver      \"auto-detected\"
+EndSection" > /etc/X11/xorg.conf.d/20-auto-detected.conf
+
+# Inicia Xorg automáticamente al iniciar sesión en la consola
+echo "exec startx" > /root/.bash_profile
+
+echo "Configuración de controladores de gráficos y Xorg completada con éxito."
