@@ -33,11 +33,13 @@ if [ -n "$disk_name" ]; then
     # Ejecutar cfdisk para configurar particiones
     cfdisk "/dev/$disk_name"
 
+
+    clear
     # Mostrar información sobre particiones del disco seleccionado después de cfdisk
     echo "Particiones actuales en /dev/$disk_name:"
     lsblk "/dev/$disk_name"
 
-    clear
+    
 
     # Solicitar al usuario que elija una partición para darle formato ext4
     echo -n "Ingrese el número de la partición a la que desea dar formato ext4: "
@@ -97,8 +99,8 @@ fi
 
 pacstrap /mnt base base-devel nano 
 
-pacstrap /mnt linux linux-firmware linux-headers mkinitcpio 
+pacstrap /mnt linux linux-firmware linux-headers
 
 genfstab -p /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt
+#arch-chroot /mnt
