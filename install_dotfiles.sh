@@ -125,9 +125,12 @@ nitrogen --set-scaled "$ruta_imagen" --save
 
 
 # Activar los repositorios community y multilib
-sudo sed -i '/^\[community\]/{n;s/^#//}' "$pacman_conf"
-sudo sed -i '/^\[multilib\]/{n;s/^#//}' "$pacman_conf"
+sudo awk '/^\[community\]/{f=1; next} f&&/^$/{f=0; print ""} f{$1=$1} 1' "$pacman_conf" | sudo tee "$pacman_conf" > /dev/null
+sudo awk '/^\[multilib\]/{f=1; next} f&&/^$/{f=0; print ""} f{$1=$1} 1' "$pacman_conf" | sudo tee -a "$pacman_conf" > /dev/null
 
+
+# Actualizar la base de datos de paquetes
+sudo pacman -Sy
 # Actualizar la base de datos de paquetes
 sudo pacman -Sy
 
