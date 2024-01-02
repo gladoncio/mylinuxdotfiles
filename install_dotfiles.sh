@@ -26,7 +26,7 @@ sudo pacman -S volumeicon cbatticon xorg-xinit thunar ranger glib2 gvfs lxappear
 
 sudo pacman -S xkeyboard-config
 
-sudo pacman -S htop lolcat
+sudo pacman -S htop lolcat unzip
 
 setxkbmap -layout es -variant latam
 
@@ -82,36 +82,58 @@ fi
 if [ -d "picom" ]; then
     # Copiar la carpeta y su contenido al destino
     sudo cp -r picom "$destino"
-    echo "Carpeta qtile copiada a $destino"
+    echo "Carpeta picom copiada a $destino"
 else
-    echo "La carpeta qtile no existe en el directorio actual."
+    echo "La carpeta picom no existe en el directorio actual."
 fi
 
 
 if [ -d "kitty" ]; then
     # Copiar la carpeta y su contenido al destino
     sudo cp -r kitty "$destino"
-    echo "Carpeta qtile copiada a $destino"
+    echo "Carpeta kitty copiada a $destino"
 else
-    echo "La carpeta qtile no existe en el directorio actual."
+    echo "La carpeta kitty no existe en el directorio actual."
 fi
 
 
 if [ -d "rofi" ]; then
     # Copiar la carpeta y su contenido al destino
     sudo cp -r rofi "$destino"
-    echo "Carpeta qtile copiada a $destino"
+    echo "Carpeta rofi copiada a $destino"
 else
-    echo "La carpeta qtile no existe en el directorio actual."
+    echo "La carpeta rofi no existe en el directorio actual."
 fi
 
 if [ -d "wallpapers" ]; then
     # Copiar la carpeta y su contenido al destino
     sudo cp -r wallpapers "$destino_usuario"
-    echo "Carpeta qtile copiada a $destino_usuario"
+    echo "Carpeta wallpapers copiada a $destino_usuario"
 else
-    echo "La carpeta qtile no existe en el directorio actual."
+    echo "La carpeta wallpapers no existe en el directorio actual."
 fi
+
+
+# Ruta de la carpeta que contiene las imágenes
+ruta_imagenes="$destino_usuario/wallpapers/"
+
+# Obtener la lista de todas las pantallas
+pantallas=$(xrandr --listmonitors | awk 'NR > 1 {print $4}')
+
+# Iterar sobre cada pantalla y establecer el fondo de pantalla
+for pantalla in $pantallas; do
+    # Generar una ruta de imagen única para cada pantalla
+    ruta_imagen="$ruta_imagenes$background.jpg"
+
+    # Verificar si la imagen existe
+    if [ -f "$ruta_imagen" ]; then
+        # Establecer fondo de pantalla para la pantalla actual
+        nitrogen --head="$pantalla" --set-scaled "$ruta_imagen" --save
+    else
+        echo "La imagen para la pantalla $pantalla no existe: $ruta_imagen"
+    fi
+done
+
 
 # # Configura Xorg
 # echo "Section \"Device\"
