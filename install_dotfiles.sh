@@ -79,22 +79,22 @@ else
     echo "La carpeta qtile no existe en el directorio actual."
 fi
 
-if [ -d "picom" ]; then
-    # Copiar la carpeta y su contenido al destino
-    sudo cp -r picom "$destino"
-    echo "Carpeta picom copiada a $destino"
-else
-    echo "La carpeta picom no existe en el directorio actual."
-fi
-
-
-# if [ -d "kitty" ]; then
+# if [ -d "picom" ]; then
 #     # Copiar la carpeta y su contenido al destino
-#     sudo cp -r kitty "$destino"
-#     echo "Carpeta kitty copiada a $destino"
+#     sudo cp -r picom "$destino"
+#     echo "Carpeta picom copiada a $destino"
 # else
-#     echo "La carpeta kitty no existe en el directorio actual."
+#     echo "La carpeta picom no existe en el directorio actual."
 # fi
+
+
+if [ -d "kitty" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r kitty "$destino"
+    echo "Carpeta kitty copiada a $destino"
+else
+    echo "La carpeta kitty no existe en el directorio actual."
+fi
 
 
 if [ -d "rofi" ]; then
@@ -131,6 +131,16 @@ if ! grep -q '^\[multilib\]' "$pacman_conf"; then
     echo "[multilib]" | sudo tee -a "$pacman_conf" > /dev/null
 fi
 echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a "$pacman_conf" > /dev/null
+
+
+
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si
+
+cd ..
 
 # Actualizar la base de datos de paquetes
 sudo pacman -Sy
