@@ -29,19 +29,26 @@ sudo pacman -S volumeicon cbatticon xorg-xinit thunar ranger glib2 gvfs lxappear
 sudo pacman -Syu --noconfirm xorg xorg-xinit xorg-server-utils mesa
 
 # Utiliza lspci para obtener información sobre la tarjeta gráfica
+# Instala Xorg y utilidades básicas (si no están instaladas)
+sudo pacman -Syu --noconfirm xorg xorg-xinit xorg-server-utils mesa
+
+# Utiliza lspci para obtener información sobre la tarjeta gráfica
 gpu_info=$(lspci | grep VGA)
 echo "Información de la tarjeta gráfica: $gpu_info"
 
 # Determina el controlador de gráficos basándote en la información de lspci
 if [[ $gpu_info == *"Intel"* ]]; then
     echo "Detectada tarjeta gráfica Intel. Instalando controlador para Intel."
-    pacman -S --noconfirm xf86-video-intel
+    sudo pacman -S --noconfirm xf86-video-intel
 elif [[ $gpu_info == *"NVIDIA"* ]]; then
     echo "Detectada tarjeta gráfica NVIDIA. Instalando controlador para NVIDIA."
-    pacman -S --noconfirm nvidia
+    sudo pacman -S --noconfirm nvidia
 elif [[ $gpu_info == *"AMD"* ]]; then
     echo "Detectada tarjeta gráfica AMD. Instalando controlador para AMD."
-    pacman -S --noconfirm xf86-video-amdgpu
+    sudo pacman -S --noconfirm xf86-video-amdgpu
+elif [[ $gpu_info == *"QEMU"* || $gpu_info == *"VirtualBox"* || $gpu_info == *"VMware"* ]]; then
+    echo "Detectada máquina virtual. Instalando controlador genérico."
+    sudo pacman -S --noconfirm xf86-video-vesa
 else
     echo "No se pudo determinar automáticamente el controlador de gráficos. Por favor, instálalo manualmente."
 fi
