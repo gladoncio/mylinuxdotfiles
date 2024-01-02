@@ -73,3 +73,8 @@ disk_name=$(lsblk -d -o NAME --noheadings | sed -n "${choice}p")
 if [ -n "$disk_name" ]; then
 
     grub-install "/dev/$disk_name"
+
+else
+    echo "¡La opción de disco ingresada no es válida! Abortando."
+    exit 1
+fi
