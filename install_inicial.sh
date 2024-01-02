@@ -114,3 +114,10 @@ else
     # Puedes agregar más comandos específicos para instalación sin dual boot aquí
 
 fi
+
+
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si

@@ -139,14 +139,10 @@ echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a "$pacman_conf" > /dev/nu
 # Actualizar la base de datos de paquetes
 sudo pacman -Sy
 
+sudo pacman -S zsh
 
-git clone https://aur.archlinux.org/yay.git
+yay -S nerd-fonts-complete-mono-glyphs
 
-cd yay
-
-makepkg -si
-
-cd ..
 
 
 
