@@ -54,6 +54,26 @@ else
     echo "No se pudo determinar automáticamente el controlador de gráficos. Por favor, instálalo manualmente."
 fi
 
+# Obtener el nombre de usuario principal
+USERNAME="$SUDO_USER"
+
+# Si SUDO_USER está vacío, intentar obtener el nombre de usuario actual
+if [ -z "$USERNAME" ]; then
+    USERNAME=$(logname)
+fi
+
+# Ruta de destino
+destino="/home/$USERNAME/.config/"
+
+# Verificar si la carpeta qtile existe
+if [ -d "qtile" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r qtile "$destino"
+    echo "Carpeta qtile copiada a $destino"
+else
+    echo "La carpeta qtile no existe en el directorio actual."
+fi
+
 
 # # Configura Xorg
 # echo "Section \"Device\"

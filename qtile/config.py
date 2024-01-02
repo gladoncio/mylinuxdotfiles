@@ -166,7 +166,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
 
 
-    Key([mod], "p", lazy.spawn("/home/gladoncio/.config/qtile/pantalla.sh")),
+    #Key([mod], "p", lazy.spawn("/home/gladoncio/.config/qtile/pantalla.sh")),
     Key([mod], "n", lazy.spawn("nm-connection-editor")),
 
     
