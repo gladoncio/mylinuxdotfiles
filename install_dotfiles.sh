@@ -140,6 +140,14 @@ echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a "$pacman_conf" > /dev/nu
 sudo pacman -Sy
 
 
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si
+
+cd ..
+
 
 
 
