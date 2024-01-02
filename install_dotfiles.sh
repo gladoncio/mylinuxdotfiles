@@ -79,13 +79,13 @@ else
     echo "La carpeta qtile no existe en el directorio actual."
 fi
 
-# if [ -d "picom" ]; then
-#     # Copiar la carpeta y su contenido al destino
-#     sudo cp -r picom "$destino"
-#     echo "Carpeta picom copiada a $destino"
-# else
-#     echo "La carpeta picom no existe en el directorio actual."
-# fi
+if [ -d "picom" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r picom "$destino"
+    echo "Carpeta picom copiada a $destino"
+else
+    echo "La carpeta picom no existe en el directorio actual."
+fi
 
 
 # if [ -d "kitty" ]; then
@@ -117,11 +117,7 @@ fi
 # Ruta de la carpeta que contiene las imágenes
 ruta_imagenes="$destino_usuario/wallpapers/"
 
-
-ruta_imagen="$ruta_imagenes/background.jpg"
-
-
-nitrogen --set-scaled "$ruta_imagen" --save
+nitrogen "$ruta_imagenes"
 
 
 # Activar el repositorio community
@@ -143,6 +139,9 @@ sudo pacman -S zsh
 
 yay -S nerd-fonts-complete-mono-glyphs
 
+yay -S ttf-meslo-nerd
+
+sudo sensors-detect
 
 
 
