@@ -97,10 +97,11 @@ else
 fi
 
 
-pacstrap /mnt base base-devel nano 
+pacstrap /mnt base base-devel nano git
 
 pacstrap /mnt linux linux-firmware linux-headers
 
 genfstab -p /mnt >> /mnt/etc/fstab
 
-#arch-chroot /mnt
+arch-chroot /mnt
+
