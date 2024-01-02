@@ -37,8 +37,10 @@ echo "127.0.1.1    $NOMBRE_SISTEMA.localdomain    $NOMBRE_SISTEMA" >> /etc/hosts
 # Crear un usuario y establecer contraseña
 useradd -m -g users -G wheel,storage,power -s /bin/bash $USUARIO
 
+echo "INGRESE LA CLAVE PARA $USUARIO"
 passwd $USUARIO
 
+echo "INGRESE LA CLAVE PARA EL ROOT"
 passwd root
 
 # Descomentar la línea %wheel ALL=(ALL:ALL) ALL
