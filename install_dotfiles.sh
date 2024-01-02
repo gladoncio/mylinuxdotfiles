@@ -55,25 +55,13 @@ else
 fi
 
 
-# Obtener el nombre de usuario principal
-USERNAME="$SUDO_USER"
-
-# Si SUDO_USER está vacío, intentar obtener el nombre de usuario actual
-if [ -z "$USERNAME" ]; then
-    USERNAME=$(logname)
-fi
-
-echo "Nombre de usuario: $USERNAME"
-
-sudo su
-
 # Configura Xorg
 echo "Section \"Device\"
     Identifier  \"Auto-detected Graphics\"
     Driver      \"auto-detected\"
-EndSection" > /etc/X11/xorg.conf.d/20-auto-detected.conf
+EndSection" | sudo tee /etc/X11/xorg.conf.d/20-auto-detected.conf > /dev/null
 
 # Inicia Xorg automáticamente al iniciar sesión en la consola
-echo "exec startx" > /root/.bash_profile
+echo "exec startx" | sudo tee /root/.bash_profile > /dev/null
 
 echo "Configuración de controladores de gráficos y Xorg completada con éxito."
