@@ -117,22 +117,13 @@ fi
 # Ruta de la carpeta que contiene las imágenes
 ruta_imagenes="$destino_usuario/wallpapers/"
 
-# Obtener la lista de todas las pantallas
-pantallas=$(xrandr --listmonitors | awk 'NR > 1 {print $4}')
 
-# Iterar sobre cada pantalla y establecer el fondo de pantalla
-for pantalla in $pantallas; do
-    # Generar una ruta de imagen única para cada pantalla
-    ruta_imagen="$ruta_imagenes$background.jpg"
+ruta_imagen="$ruta_imagenes$background.jpg"
 
-    # Verificar si la imagen existe
-    if [ -f "$ruta_imagen" ]; then
-        # Establecer fondo de pantalla para la pantalla actual
-        nitrogen --head="$pantalla" --set-scaled "$ruta_imagen" --save
-    else
-        echo "La imagen para la pantalla $pantalla no existe: $ruta_imagen"
-    fi
-done
+
+nitrogen --set-scaled "$ruta_imagen" --save
+
+
 
 
 # # Configura Xorg
