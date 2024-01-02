@@ -118,7 +118,7 @@ fi
 ruta_imagenes="$destino_usuario/wallpapers/"
 
 
-ruta_imagen="$ruta_imagenes$background.jpg"
+ruta_imagen="$ruta_imagenes/background.jpg"
 
 
 nitrogen --set-scaled "$ruta_imagen" --save
