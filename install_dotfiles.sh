@@ -20,13 +20,17 @@ sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
 
 sudo pacman -S pulseaudio pavucontrol pamixer
 
-sudo pacman -S arandr udiskie netowork-manager-applet
+sudo pacman -S arandr udiskie
+
+sudo pacman -S netowork-manager-applet
 
 sudo pacman -S volumeicon cbatticon xorg-xinit thunar ranger glib2 gvfs lxappearance picom geeqie vlc 
 
 sudo pacman -S xkeyboard-config
 
 sudo pacman -S htop lolcat unzip
+
+sudo pacman -S python-psutil
 
 setxkbmap -layout es -variant latam
 
@@ -133,15 +137,6 @@ fi
 echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a "$pacman_conf" > /dev/null
 
 
-
-git clone https://aur.archlinux.org/yay.git
-
-cd yay
-
-makepkg -si
-
-cd ..
-
 # Actualizar la base de datos de paquetes
 sudo pacman -Sy
 
@@ -151,7 +146,7 @@ yay -S nerd-fonts-complete-mono-glyphs
 
 yay -S ttf-meslo-nerd
 
-sudo sensors-detect
+
 
 
 
