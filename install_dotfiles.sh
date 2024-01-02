@@ -6,8 +6,6 @@ echo "¡Hola, bienvenido al script post grub!"
 source configuracion.sh
 
 
-sudo pacman -S neofetch
-
 sudo pacman -S lightdm lightdm-gtk-greeter
 
 sudo sed -i 's/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf
@@ -118,10 +116,6 @@ else
 fi
 
 
-# Ruta de la carpeta que contiene las imágenes
-ruta_imagenes="$destino_usuario/wallpapers/"
-
-nitrogen "$ruta_imagenes"
 
 
 # Activar el repositorio community

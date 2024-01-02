@@ -55,6 +55,8 @@ systemctl enable dhcpcd NetworkManager
 
 pacman -S reflector
 
+pacman -S neofetch
+
 reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 
@@ -120,3 +122,4 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 
 makepkg -si
+
