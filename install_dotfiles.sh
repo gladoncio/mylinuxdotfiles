@@ -30,8 +30,6 @@ sudo pacman -S htop lolcat unzip
 
 sudo pacman -S python-psutil
 
-setxkbmap -layout es -variant latam
-
 #sudo systemctl restart display-manager.service
 
 # Instala Xorg y utilidades básicas (si no están instaladas)
