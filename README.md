@@ -17,25 +17,26 @@ Todas las configuraciones del usuario se realizan en el archivo `configuracion.s
 
    ```bash
    ./install_base.sh
+    ```
+
 Después de instalar el sistema base, inicia sesión y ejecuta el siguiente comando para realizar la instalación inicial:
 
 
    ```bash
 ./install_inicial.sh
-
-
-ya tienes un sistema definido y deseas instalar tus configuraciones personalizadas, ejecuta:
+ ```
+Ya tienes un sistema definido y deseas instalar tus configuraciones personalizadas, ejecuta:
 
    ```bash
 ./install_dotfiles.sh
+ ```
 
 
 Este script también utilizará Nitrogen para cambiar el fondo de pantalla.
 Si prefieres utilizar el fondo de pantalla del repositorio, ejecuta:
-
    ```bash
 ./install_reboot.sh
-
+ ```
 
 Asegúrate de reiniciar el sistema después de ejecutar este script.
 
