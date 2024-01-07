@@ -73,7 +73,7 @@ if [ -z "$USERNAME" ]; then
 fi
 
 # Ruta de destino
-destino="/home/$USERNAME/.config/"
+destino="/home/$USERNAME/.config"
 
 destino_usuario="/home/$USERNAME"
 
@@ -100,8 +100,8 @@ fi
 
 if [ -d "kitty" ]; then
     # Copiar la carpeta y su contenido al destino
-    sudo cp -r kitty "$destino"
-    echo "Carpeta kitty copiada a $destino"
+    sudo cp -r kitty "$destino/"
+    echo "Carpeta kitty copiada a $destino/"
 else
     echo "La carpeta kitty no existe en el directorio actual."
 fi
@@ -110,7 +110,7 @@ fi
 if [ -d "rofi" ]; then
     # Copiar la carpeta y su contenido al destino
     sudo cp -r rofi "$destino"
-    echo "Carpeta rofi copiada a $destino"
+    echo "Carpeta rofi copiada a $destino/"
 else
     echo "La carpeta rofi no existe en el directorio actual."
 fi
