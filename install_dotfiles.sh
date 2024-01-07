@@ -169,15 +169,14 @@ sudo pacman -S wget lsd feh
 
 archivo_inicio="$destino/qtile/inicio.sh"
 
+ruta_imagen_fondo="$destino_usuario/wallpapers/background.jpg"
+
 sudo bash -c "cat <<EOL >> $archivo_inicio
 
-# Ruta de la imagen de fondo
-ruta_imagen_fondo=\"$destino_usuario/wallpapers/background.jpg\"
-
 # Verificar si la imagen de fondo existe
-if [ -f \"\$ruta_imagen_fondo\" ]; then
+if [ -f "$ruta_imagen_fondo" ]; then
     # Establecer la imagen de fondo con feh
-    feh --bg-fill \"\$ruta_imagen_fondo\"
+    feh --bg-fill "$ruta_imagen_fondo"
     echo \"Imagen de fondo establecida correctamente.\"
 else
     echo \"La imagen de fondo no existe en la ruta especificada.\"
