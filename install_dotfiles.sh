@@ -154,7 +154,7 @@ yay -S nerd-fonts-complete-mono-glyphs
 
 yay -S ttf-meslo-nerd
 
-pacman -S cava wget
+pacman -S cava wget lsd
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
