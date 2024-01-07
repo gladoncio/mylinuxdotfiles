@@ -164,13 +164,13 @@ yay -S nerd-fonts-complete-mono-glyphs
 
 yay -S ttf-meslo-nerd
 
-pacman -S cava wget lsd feh
+sudo pacman -S cava wget lsd feh
 
 
 archivo_inicio="$destino/qtile/inicio.sh"
 
 # Agregar las líneas al final del archivo inicio.sh
-cat <<EOL >> "$archivo_inicio"
+sudo cat <<EOL >> "$archivo_inicio"
 
 # Ruta de la imagen de fondo
 ruta_imagen_fondo="/$destino_usuario/wallpapers/background.jpg"
