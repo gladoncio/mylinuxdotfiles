@@ -161,7 +161,13 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 chsh -s /bin/zsh $USERNAME
 
 
-
+if [ -d ".zshrc" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r .zshrc "$destino_usuario"
+    echo "Config zsh copiada a $destino_usuario"
+else
+    echo "La config zsh no existe en el directorio actual."
+fi
 
 
 
