@@ -77,13 +77,13 @@ destino="/home/$USERNAME/.config/"
 
 destino_usuario="/home/$USERNAME"
 
-
+sudo mkdir "$destino/qtile"
 
 # Verificar si la carpeta qtile existe
 if [ -d "qtile" ]; then
     # Copiar la carpeta y su contenido al destino
-    sudo cp -r qtile "$destino"
-    echo "Carpeta qtile copiada a $destino"
+    sudo cp -r qtile/. "$destino/qtile"
+    echo "Carpeta qtile copiada a $destino/qtile"
 else
     echo "La carpeta qtile no existe en el directorio actual."
 fi
@@ -161,9 +161,9 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 chsh -s /bin/zsh $USERNAME
 
 
-if [ -d ".zshrc" ]; then
-    # Copiar la carpeta y su contenido al destino
-    sudo cp -r .zshrc "$destino_usuario"
+if [ -f ".zshrc" ]; then
+    # Copiar el archivo al destino
+    cp .zshrc "$destino_usuario"
     echo "Config zsh copiada a $destino_usuario"
 else
     echo "La config zsh no existe en el directorio actual."
