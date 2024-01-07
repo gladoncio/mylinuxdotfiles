@@ -77,13 +77,23 @@ destino="/home/$USERNAME/.config"
 
 destino_usuario="/home/$USERNAME"
 
-sudo mkdir "$destino/qtile"
 
 # Verificar si la carpeta qtile existe
 if [ -d "qtile" ]; then
     # Copiar la carpeta y su contenido al destino
-    sudo cp -r qtile/. "$destino/qtile"
-    echo "Carpeta qtile copiada a $destino/qtile"
+    sudo cp -r qtile. "$destino"
+    echo "Carpeta qtile copiada a $destino"
+else
+    echo "La carpeta qtile no existe en el directorio actual."
+fi
+
+
+
+# Verificar si la carpeta qtile existe
+if [ -d "qtile" ]; then
+    # Copiar la carpeta y su contenido al destino
+    sudo cp -r qtile. "$destino"
+    echo "Carpeta qtile copiada a $destino"
 else
     echo "La carpeta qtile no existe en el directorio actual."
 fi
