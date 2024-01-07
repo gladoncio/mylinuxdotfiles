@@ -81,7 +81,7 @@ destino_usuario="/home/$USERNAME"
 # Verificar si la carpeta qtile existe
 if [ -d "qtile" ]; then
     # Copiar la carpeta y su contenido al destino
-    sudo cp -r qtile. "$destino"
+    sudo cp -r qtile "$destino"
     echo "Carpeta qtile copiada a $destino"
 else
     echo "La carpeta qtile no existe en el directorio actual."
@@ -92,7 +92,7 @@ fi
 # Verificar si la carpeta qtile existe
 if [ -d "qtile" ]; then
     # Copiar la carpeta y su contenido al destino
-    sudo cp -r qtile. "$destino"
+    sudo cp -r qtile "$destino"
     echo "Carpeta qtile copiada a $destino"
 else
     echo "La carpeta qtile no existe en el directorio actual."
