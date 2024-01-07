@@ -190,6 +190,7 @@ echo "Líneas de fondo de pantalla agregadas al archivo inicio.sh"
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
+
 chsh -s /bin/zsh $USERNAME
 
 
