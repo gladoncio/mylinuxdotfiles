@@ -1,6 +1,6 @@
 # mylinuxdotfiles
 
-![Preview](https://github.com/gladoncio/mylinuxdotfiles/preview.png)
+![Preview](https://github.com/gladoncio/mylinuxdotfiles/blob/main/preview.png)
 
 
 Breve descripción de tu proyecto.
