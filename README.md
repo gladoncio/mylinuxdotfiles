@@ -1,5 +1,8 @@
 # mylinuxdotfiles
 
+![Preview](https://github.com/gladoncio/mylinuxdotfiles/preview.png)
+
+
 Breve descripción de tu proyecto.
 
 ## Configuración
@@ -8,7 +11,6 @@ Todas las configuraciones del usuario se realizan en el archivo `configuracion.s
 
 ## Requerimientos
 
-- **Sistema Operativo:** Linux
 - **Requisitos Iniciales:** Ninguno
 
 ## Inicio Rápido
